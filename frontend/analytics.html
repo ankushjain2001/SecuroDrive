@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Securodrive Analytics</title>
+    <link rel="shortcut icon" type="image/x-icon" href="./img/logo_invert.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- Cognito SDK -->
+    <script src="./js/cognito/amazon-cognito-auth.min.js"></script>
+    <script src="./js/cognito/amazon-cognito-identity.min.js"></script>  
+    <script src="./js/cognito/config.js"></script>
+
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white navbar-style">
+      <div class="container">
+        <!-- Logo -->
+        <a class="navbar-brand" href="./">
+          <img src="./img/logo.png" width="30" height="30" class="d-inline-block align-top mr-2" alt="">
+          <b>Securodrive</b>
+        </a>
+        <!-- Menu Button -->
+        <button class="navbar-toggler" id="home-page-toggler" type="button" data-toggle="collapse" data-target="#home-page-menu" aria-controls="home-page-menu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Menu Items -->
+        <div class="collapse navbar-collapse ml-lg-4" id="home-page-menu">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="./"><b>Create Trip</b></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./history.html"><b>History</b></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="./analytics.html"><b>Analytics</b></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./profile.html"><b>Profile</b></a>
+            </li>
+          </ul>
+          <!-- Username -->
+          <form class="form-inline my-2 my-lg-0 ml-lg-4">
+            <b><span id="home-text" class="text-dark"></span></b>
+          </form>
+          <!-- Logout Button -->
+          <form class="form-inline my-2 my-lg-0 ml-lg-4">
+            <a href="./" class="btn btn-outline-dark my-sm-0" role="button" onclick="logOut()"><b>Logout</b></a>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Home Page Content -->
+    <div class="container" id="home-page">
+      <div class="row mt-4">
+        <div class="col">
+          <h2><b>Analytics</b></h2>
+        </div>
+      </div>
+
+      <hr>
+      <div class="row mt-4 mb-4">
+        <div class="col">
+          <h4><b>Hourly Distribution : Drowsiness</b></h4>
+          <span> Helps analyze your drowsiness patterns during the different hours of the day </span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <iframe id="viz_01" src="" height="500px" width="100%"></iframe>
+        </div>
+      </div>
+
+      <!-- <div class="row mt-4 mb-4">
+        <div class="col">
+          <h4><b>Drowse v/s Yawn Distribution</b></h4>
+
+          <span> Displays the frequency of yawns and drowses </span>
+        </div>
+      </div>
+
+    </div> -->
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./js/auth.js"></script>
+
+    <script>
+      var current_user_email = localStorage.getItem("current_user_email");
+      var viz_01_src = "https://search-kibana-test-hrgtvqtpirdohmbmrl5rxrfzua.us-east-1.es.amazonaws.com/_plugin/kibana/app/visualize#/edit/f63eba70-47de-11eb-ac97-c5bef1173edc?embed=true&_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(filters:!(),linked:!f,query:(language:kuery,query:'user_email:"+current_user_email+"'),uiState:(vis:(colors:('Number%20of%20Alerts':%235195CE))),vis:(aggs:!((enabled:!t,id:'1',params:(customLabel:'Number%20of%20Alerts'),schema:metric,type:count),(enabled:!t,id:'2',params:(customLabel:'Hour%20of%20the%20day',field:hour,missingBucket:!f,missingBucketLabel:Missing,order:asc,orderBy:_key,otherBucket:!f,otherBucketLabel:Other,size:23),schema:segment,type:terms)),params:(addLegend:!t,addTimeMarker:!f,addTooltip:!t,categoryAxes:!((id:CategoryAxis-1,labels:(filter:!t,show:!t,truncate:100),position:bottom,scale:(type:linear),show:!t,style:(),title:(),type:category)),grid:(categoryLines:!f),labels:(show:!f),legendPosition:right,seriesParams:!((data:(id:'1',label:'Number%20of%20Alerts'),drawLinesBetweenPoints:!t,lineWidth:2,mode:stacked,show:!t,showCircles:!t,type:histogram,valueAxis:ValueAxis-1)),thresholdLine:(color:%23E7664C,show:!f,style:full,value:10,width:1),times:!(),type:histogram,valueAxes:!((id:ValueAxis-1,labels:(filter:!f,rotate:0,show:!t,truncate:100),name:LeftAxis-1,position:left,scale:(mode:normal,type:linear),show:!t,style:(),title:(text:'Number%20of%20Alerts'),type:value))),title:barchart,type:histogram))"
+      
+      document.getElementById('viz_01').src = viz_01_src;
+    </script>
+
+  </body>
+</html>

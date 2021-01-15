@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Securodrive Past Trip</title>
+    <link rel="shortcut icon" type="image/x-icon" href="./img/logo_invert.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- Cognito SDK -->
+    <script src="./js/cognito/amazon-cognito-auth.min.js"></script>
+    <script src="./js/cognito/amazon-cognito-identity.min.js"></script>  
+    <script src="./js/cognito/config.js"></script>
+
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white navbar-style">
+      <div class="container">
+        <!-- Logo -->
+        <a class="navbar-brand" href="./">
+          <img src="./img/logo.png" width="30" height="30" class="d-inline-block align-top mr-2" alt="">
+          <b>Securodrive</b>
+        </a>
+        <!-- Menu Button -->
+        <button class="navbar-toggler" id="home-page-toggler" type="button" data-toggle="collapse" data-target="#home-page-menu" aria-controls="home-page-menu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Menu Items -->
+        <div class="collapse navbar-collapse ml-lg-4" id="home-page-menu">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="./"><b>Create Trip</b></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./history.html"><b>History</b></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./analytics.html"><b>Analytics</b></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./profile.html"><b>Profile</b></a>
+            </li>
+          </ul>
+          <!-- Username -->
+          <form class="form-inline my-2 my-lg-0 ml-lg-4">
+            <b><span id="home-text" class="text-dark"></span></b>
+          </form>
+          <!-- Logout Button -->
+          <form class="form-inline my-2 my-lg-0 ml-lg-4">
+            <a href="./" class="btn btn-outline-dark my-sm-0" role="button" onclick="logOut()"><b>Logout</b></a>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Home Page Content -->
+    <div class="container" id="home-page">
+      <div class="row mt-4">
+        <div class="col">
+          <h2><b>Past Trip</b></h2>
+        </div>
+      </div>
+      <hr>
+
+      <div class="container">
+        <!-- <div class="card-body"> -->
+          <div class="row mb-2">
+            <h4><b>Overview</b></h4>
+          </div>
+
+          <div class="row mb-2">
+            <div class="col text-dark">
+              <h6 id="trip_id"><b>TRIP ID:</b></h6>
+            </div>
+            <div class="col-2 text-dark">
+              <span id="trip_date"><b><i class="fas fa-calendar-alt pr-2"></i></b></span>
+            </div>
+            <div class="col-2 text-dark">
+              <span id="trip_time"><b><i class="fas fa-clock pr-2"></i></b></span>
+            </div>
+          </div>
+          
+          <div class="row mb-2">
+            <div class="col">
+              <span id="trip_start"><i class="fas fa-map-marker-alt pr-2"></i><b>Start: </b></span>
+            </div>
+            <div class="col-4">
+              <span id="trip_start_ll"><i class="fas fa-map-marked-alt pr-2"></i><b>Start Lat/Lon: </b></span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <span id="trip_dest"><i class="fas fa-map-marker-alt pr-2"></i><b>Destination: </b></span>
+            </div>
+            <div class="col-4">
+              <span id="trip_dest_ll"><i class="fas fa-map-marked-alt pr-2"></i><b>Destination Lat/Lon: </b></span>
+            </div>
+          </div>
+      </div>  
+      <hr>
+
+      <div class="row mb-2">
+        <div class="col">
+          <h4><b>Statistics</b></h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <iframe id="viz_01" src="" height="400px" width="100%"></iframe>
+        </div>
+      </div>
+      
+      
+      <hr>
+
+      <div class="row">
+        <div class="col">
+          <h4><b>Snapshots Yawn/Drowse</b></h4>
+        </div>
+      </div>
+
+      <!-- Grid -->
+      <div id="x-grid-div" class="row mt-4 mx-2 pl-1 mb-4">
+      </div>
+
+    </div>
+
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./js/auth.js"></script>
+    <script type="text/javascript" src="./js/past_trip.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,81 @@
+#home-page{
+  display: none;
+}
+#auth-page{
+  display: none;
+}
+#home-page-menu{
+  visibility: hidden;
+}
+#home-page-toggler{
+  visibility: hidden;
+}
+.navbar-style{
+  border-bottom: 1.5px solid #ccc;
+}
+/* Profile page CSS */
+.alert-update-box{
+  display: none;
+}
+
+.form-reg{
+  font-size: 0.8rem;
+}
+
+.img-style{
+  object-fit: cover;
+  overflow: hidden;
+  height: 100px;
+  width : 100px;
+}  
+
+
+/* Create Trip CSS */
+#map {
+  height: 400px;
+  width: 100%;
+  border-radius: 0.25rem;
+}
+
+#video-stream {
+  height: 400px;
+  width: 100%;
+  border-radius: 0.25rem;
+}
+
+#spin-loader{
+  display: none;
+}
+
+#spin-loader-2{
+  display: none;
+}
+/* Current Trip CSS */
+#notification-div{
+  overflow-y:auto;
+  max-height:700px;
+  -ms-overflow-style: none; 
+  scrollbar-width: none;
+}
+#notification-div::-webkit-scrollbar {
+  display: none;
+}
+.bg-gray{
+  background-color: rgb(250, 250, 250);
+}
+.alert-warning-border{
+  border-color: #e2ca83
+}
+.alert-recommendation{
+  cursor: pointer;
+}
+
+.alert-recommendation:hover{
+  background-color: #a0cdfd;
+}
+.img-style{
+  object-fit: cover;
+  overflow: hidden;
+  height: 200px;
+  width : 200px;
+} 
