@@ -36,8 +36,8 @@ http://project-frontend-web.s3-website-us-east-1.amazonaws.com/
 - /trip/end - POST - project_terminate : Used to terminate the EC2 AI model job instance
 - /trip/video - GET - hls_url : Generates a HLS URL for Live Kinesis Video Stream.
 
-### Team Members
+### Contributors
 - Ankush Jain
 - [Smit Sheth](https://github.com/SmitSheth)
 - [Vishnu Thakral](https://github.com/vvthakral)
-- [Darshan Arvind Solanki](https://github.com/Darshansol9)
+- [Darshan Solanki](https://github.com/Darshansol9)
