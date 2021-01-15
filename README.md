@@ -1,4 +1,3 @@
-# Cloud Computing (CS-GY-9223-C) - Project
 # SecuroDrive
 Securodrive is a driving assistant platform that is built to avoid road accidents due to sleepy drivers. This app assists the drivers by applying AI techniques to the live video stream of the driver and generating alerts when the driver appears to be yawning excessively or going in a drowsy state  And alert them when they are sleepy. It is a serverless microservice-driven web application hosted on AWS.
 
