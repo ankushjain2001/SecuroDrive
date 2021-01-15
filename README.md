@@ -37,7 +37,7 @@ http://project-frontend-web.s3-website-us-east-1.amazonaws.com/
 - /trip/video - GET - hls_url : Generates a HLS URL for Live Kinesis Video Stream.
 
 ### Team Members
-- Ankush Jain (AJ2885)
-- Smit Sheth (SHS572)
-- Vishnu Thakral (VVT223)
-- Darshan Arvind Solanki (DAS968)
+- Ankush Jain
+- [Smit Sheth](https://github.com/SmitSheth)
+- [Vishnu Thakral](https://github.com/vvthakral)
+- [Darshan Arvind Solanki](https://github.com/Darshansol9)
